@@ -18,12 +18,21 @@ class Posts extends Component{
   }
 
   submitPost(post){
+    const user = this.props.account.user
+    if(user == null){
+      alert('please signup or login to submit')
+      return
+    }
+    post['profile'] = {
+      id: user.id,
+      email: user.email
+    }
     post['geo'] = [
       this.props.posts.currentLocation.lat,
       this.props.posts.currentLocation.lng
     ]
 
-    console.log('submitPost: '+JSON.stringify(post))
+    //console.log('submitPost: '+JSON.stringify(post))
     this.props.createPost(post)
 
   }
@@ -48,7 +57,8 @@ class Posts extends Component{
 
 const stateToProps = (state) => {
   return{
-    posts: state.post
+    posts: state.post,
+    account: state.account
   }
 }
 

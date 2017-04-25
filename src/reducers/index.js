@@ -1,7 +1,9 @@
 import postReducer from './postReducer'
+import accountReducer from './accountReducer'
 
 export {
-  
-  postReducer
+
+  postReducer,
+  accountReducer
 
 }

@@ -25,7 +25,11 @@ export default {
     return (dispatch) =>{
       APIManager.post('/api/post', params)
         .then(response=>{
-          console.log('response: '+JSON.stringify(response))
+          // console.log('response: '+JSON.stringify(response))
+          dispatch({
+            type: constants.POST_CREATED,
+            post: response.result
+          })
 
         })
         .catch(err=>{
@@ -39,6 +43,55 @@ export default {
       type: constants.CURRENT_LOCATION_CHANGED,
       location: location
     }
+  },
+
+  signup: (profile)=>{
+    return (dispatch) => {
+      APIManager.post('/account/register', profile)
+      .then(response =>{
+        dispatch({
+          type: constants.CURRENT_USER_RECEIVED,
+          user: response.profile
+        })
+
+      })
+      .catch(err=>{
+        console.log('ERROR: '+err)
+      })
+    }
+  },
+
+  login: (credentials)=>{
+    return (dispatch) => {
+      APIManager.post('/account/login', credentials)
+      .then(response =>{
+        //console.log(JSON.stringify(response))
+        dispatch({
+          type: constants.CURRENT_USER_RECEIVED,
+          user: response.profile
+        })
+
+      })
+      .catch(err=>{
+        console.log('ERROR: '+err)
+      })
+    }
+  },
+
+  checkCurrentUser: ()=>{
+    return (dispatch) =>{
+      APIManager.get('/account/currentuser', null)
+      .then(response=>{
+        dispatch({
+          type: constants.CURRENT_USER_RECEIVED,
+          user: response.result
+        })
+      })
+      .catch(err=>{
+        console.log('ERROR: '+err)
+      })
+    }
   }
+
 
 }

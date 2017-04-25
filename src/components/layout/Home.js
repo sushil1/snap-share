@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Posts, MapNavigation} from '../containers'
+import {Posts, MapNavigation, Account} from '../containers'
 
 class Home extends Component{
   render(){
@@ -13,7 +13,7 @@ class Home extends Component{
             <Posts />
           </div>
           <div className='col-sm-3'>
-            Admin container
+            <Account />
           </div>
         </div>
       </div>

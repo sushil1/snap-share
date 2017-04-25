@@ -13,7 +13,7 @@ router.get('/currentuser', function(req, res, next){
     console.log('no token assigned')
     return
   }
-  jwt.verify(token, function(err, decode){
+  jwt.verify(req.session.token, process.env.JWT_TOKEN_SECRET, function(err, decode){
     if(err){
       console.log(err)
       return
@@ -90,10 +90,11 @@ router.post('/login', function(req, res, next){
 
 router.get('/logout', function(req, res, next) {
   req.session.reset()
-  res.json({
-    confirmation:'success',
-    message:'logged out'
-  })
+  res.render('index', {})
+  // res.json({
+  //   confirmation:'success',
+  //   message:'logged out'
+  // })
 })
 
 module.exports = router
