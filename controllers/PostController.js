@@ -19,7 +19,13 @@ module.exports = {
         delete params['lng']
       }
 
-      Post.find(params, function(err, posts){
+      var filters = {
+        sort: {
+          timestamp: -1
+        }
+      }
+      
+      Post.find(params, null, filters, function(err, posts){
         if(err){
           reject(err)
           return

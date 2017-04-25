@@ -5108,7 +5108,7 @@ exports.default = {
   fetchPosts: function fetchPosts(params) {
     return function (dispatch) {
 
-      _utils.APIManager.get('api/post', null).then(function (response) {
+      _utils.APIManager.get('api/post', params).then(function (response) {
         dispatch({
           type: _constants2.default.POSTS_RECEIVED,
           posts: response.result
@@ -12211,13 +12211,15 @@ var Posts = function (_Component) {
   _createClass(Posts, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.props.fetchPosts(null);
+      var currentLocation = this.props.posts.currentLocation;
+      this.props.fetchPosts(currentLocation);
     }
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
+      var currentLocation = this.props.posts.currentLocation;
       console.log('componentDidUpdate: ');
-      if (this.props.posts.list == null) this.props.fetchPosts(null);
+      if (this.props.posts.list == null) this.props.fetchPosts(currentLocation);
     }
   }, {
     key: 'submitPost',

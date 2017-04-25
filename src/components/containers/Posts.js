@@ -7,14 +7,16 @@ import {CreatePost} from '../presentation'
 class Posts extends Component{
 
   componentDidMount(){
-    this.props.fetchPosts(null)
+    const currentLocation = this.props.posts.currentLocation
+    this.props.fetchPosts(currentLocation)
 
   }
 
   componentDidUpdate(){
+    const currentLocation = this.props.posts.currentLocation
     console.log('componentDidUpdate: ')
     if(this.props.posts.list == null)
-      this.props.fetchPosts(null)
+      this.props.fetchPosts(currentLocation)
   }
 
   submitPost(post){

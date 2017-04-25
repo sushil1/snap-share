@@ -6,7 +6,7 @@ export default {
   fetchPosts: (params)=>{
     return (dispatch) => {
 
-      APIManager.get('api/post', null)
+      APIManager.get('api/post', params)
       .then(response=>{
         dispatch({
           type: constants.POSTS_RECEIVED,
