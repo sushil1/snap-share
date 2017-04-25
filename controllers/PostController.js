@@ -5,6 +5,20 @@ module.exports = {
 
   get: function(params, isRaw){
     return new Promise(function(resolve, reject){
+      //check the params for lat and lng
+      //if theres a query for lat and lng we will result the post based on that geolocation
+
+      if(params.lat!=null && params.lng!=null){
+        //geo spatial query
+        var range = 50/6371 //6371 is radius of earth in KM
+        params['geo'] = {
+          $near: [params.lat, params.lng],
+          $maxDistance: range
+        }
+        delete params['lat']
+        delete params['lng']
+      }
+
       Post.find(params, function(err, posts){
         if(err){
           reject(err)
