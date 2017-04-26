@@ -6,7 +6,7 @@ Babel for transpiling jsx and ES6 codes and Webpack for compiling. used bootstra
 superagent for API calls from the frontend
 
 ## To run
-clone
+clone or download
 ```
 npm install
 ```
@@ -17,9 +17,21 @@ webpack -w
 nodemon
 ```
 
-create environment variable
+## Create .env file
+Assign values to these config variables
+
+```
+DB_URL
+```
+```
+JWT_TOKEN_SECRET
+```
+```
+SESSION_SECRET
+```
+
 open the browser-- localhost:3000
 
 ### Heroku
 
-[Heroku](www.heroku.com) - Snap-share in heroku
+[Heroku](https://snap-share.herokuapp.com/) - Snap-share in heroku
