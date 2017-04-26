@@ -27,6 +27,7 @@ class Posts extends Component{
     }
     post['profile'] = {
       id: user.id,
+      name: user.name,
       email: user.email
     }
     post['geo'] = [
@@ -44,14 +45,29 @@ class Posts extends Component{
     return(
       <div>
         <CreatePost onCreate={this.submitPost.bind(this)}/>
-        <ul>
-          {(list == null)? null: list.map(post=>{
-            return(
-              <li key={post.id}>{post.caption}</li>
-            )
-          })}
-        </ul>
+
+        <div className='table-wrapper'>
+          <table className='alt'>
+            <thead>
+              <tr><th>Image</th><th>Caption</th><th>From</th></tr>
+            </thead>
+
+            <tbody>
+            {(list == null)? null:
+              list.map((post, i)=>{
+                return(
+                  <tr key={post.id}>
+                    <td><img style={{width:64}} src={post.image} /></td>
+                    <td>{post.caption}</td>
+                    <td>{post.profile.name}</td>
+                  </tr>
+                )
+              })
+            }
+            </tbody>
+          </table>
       </div>
+    </div>
     )
   }
 

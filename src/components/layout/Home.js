@@ -4,18 +4,34 @@ import {Posts, MapNavigation, Account} from '../containers'
 class Home extends Component{
   render(){
     return(
-      <div className='container'>
-        <div className='row'>
-          <div className='col-sm-3'>
+      <div>
+        <header id="header" style={{padding:0}}>
+          <div className="inner">
+
             <MapNavigation />
+
           </div>
-          <div className='col-sm-6'>
-            <Posts />
-          </div>
-          <div className='col-sm-3'>
-            <Account />
-          </div>
+        </header>
+        <div id="main">
+          <section id="one">
+            <div className='row'>
+              <div className='8u 12u$(small)'>
+
+                <Posts />
+
+              </div>
+              <div className='4u 12u$(small)'>
+
+                <Account />
+
+              </div>
+            </div>
+          </section>
+
+
         </div>
+
+
       </div>
     )
   }
