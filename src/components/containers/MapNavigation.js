@@ -17,6 +17,7 @@ class MapNavigation extends Component{
       </div>
     )
   }
+  
 }
 
 const stateToProps = (state)=>{

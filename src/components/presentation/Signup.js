@@ -56,14 +56,11 @@ class Signup extends Component{
 
     return(
       <div>
-        <h3>SignUp</h3>
+        <h3>SignUp LogIn</h3>
         <input onChange={this.updateUser.bind(this)} type='text' id='name' placeholder='Name'/><br />
         <input onChange={this.updateUser.bind(this)} type='text' id='email' placeholder='Email'/><br />
         <input onChange={this.updateUser.bind(this)} type='password' id='password' placeholder='password'/><br />
         <button onClick={this.registerUser.bind(this)}>Sign Up</button>
-        <h3>LogIn</h3>
-        <input onChange={this.updateUser.bind(this)} type='text' id='email' placeholder='Email'/><br />
-        <input onChange={this.updateUser.bind(this)} type='password' id='password' placeholder='password'/><br />
         <button onClick={this.loginUser.bind(this)}>Log In</button>
       </div>
     )
